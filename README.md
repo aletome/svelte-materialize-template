@@ -1,4 +1,4 @@
-# Svelte app template
+# Svelte app template con Materialize CSS
 
 Questo è un template per costruire applicazioni con [Svelte](https://svelte.dev) e [Materialize CSS](https://materializecss.com/). E' basato sul template https://github.com/sveltejs/template-webpack.
 
