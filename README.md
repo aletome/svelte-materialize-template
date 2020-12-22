@@ -12,7 +12,7 @@ This is a template to build web apps with [Svelte](https://svelte.dev) and [Mate
 
 ## Get started
 
-Firtst clone this repo (replace `myapp` with the name of your app):
+First clone this repo (replace `myapp` with the name of your app):
 
 ```bash
 git clone https://github.com/aletome/svelte-materialize-template.git myapp
