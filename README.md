@@ -1,36 +1,51 @@
-# Svelte app template con Materialize CSS
+# Svelte app template with Materialize CSS
 
-Questo è un template per costruire applicazioni con [Svelte](https://svelte.dev) e [Materialize CSS](https://materializecss.com/). E' basato sul template https://github.com/sveltejs/template-webpack.
+This is a template to build web apps with [Svelte](https://svelte.dev) and [Materialize CSS](https://materializecss.com/).
 
-Per creare un nuovo progetto basato su questo template usando [degit](https://github.com/Rich-Harris/degit):
 
-```bash
-npx degit sveltejs/template-webpack myapp
-cd myapp
-```
+## What is included
 
-*Devi avere [Node.js](https://nodejs.org) installato.*
-
+- Svelte framework
+- Materialice CSS
+- Webpack 5
+- Webpack dev server with hot reload
 
 ## Get started
 
-Installa le dipendenze...
+Firtst clone this repo (replace `myapp` with the name of your app):
 
 ```bash
+git clone https://github.com/aletome/svelte-materialize-template.git myapp
 cd myapp
+```
+
+If you don't want to keep all history of this project, delete `.git` hidden folder and init your new repo:
+
+```bash
+git init
+```
+
+Finally install all dependencies:
+
+```bash
 npm install
 ```
 
-...e fai partire webpack:
+That's all! You are ready to go!
+
+## Commands
+
+To start webpack in dev mode with hot reload:
 
 ```bash
 npm run dev
 ```
 
-Vai a [localhost:8585](http://localhost:8585). Dovresti vedere la tua applicazione.
+Visit [localhost:8585](http://localhost:8585) to see your app in the browser.
 
-Per generare il bundle di produzione usare
+To generate production bundle:
 
 ```bash
 npm run build
 ```
+This command create in `public` folder `index.html`, `bundle.css` and `bundel-xxxxx.js`, where `xxxxx` is a hash that changes every build.
