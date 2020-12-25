@@ -1,6 +1,14 @@
 {
   "name": "svelte-materialize-template",
-  "version": "1.0.0",
+  "version": "1.0.1",
+  "homepage": "https://github.com/aletome/svelte-materialize-template",
+  "author": {
+    "name": "Alessandro Tomè"
+  },
+  "repository": {
+    "type" : "git",
+    "url" : "https://github.com/aletome/svelte-materialize-template"
+  },
   "devDependencies": {
     "cross-env": "^7.0.3",
     "css-loader": "^5.0.1",
