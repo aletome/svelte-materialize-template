@@ -1,5 +1,5 @@
-import './materialize-custom.scss';
-import App from './App/App.svelte';
+import '../../materialize-custom.scss';
+import App from './About1.svelte';
 
 const app = new App({
 	target: document.body,

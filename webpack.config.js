@@ -12,10 +12,27 @@ const PATHS = {
 	src: path.join(__dirname, 'src')
 }
 
+const getWebPackPages = () => {
+	let entries = {};
+	let plugins = [];
+	const pages = glob.sync(`${PATHS.src}/Pages/**/main.js`,  { nodir: true });
+	pages.forEach((page) => {
+		const pageName = page.match(/(\/Pages\/)(\w+)(\/main\.js)/)[2];
+		entries[pageName] = [page];
+		plugins.push(new HtmlWebpackPlugin({
+			template: `${PATHS.src}/template.ejs`,
+			chunks: [pageName],
+			filename: `${pageName.toLowerCase()}.html`
+		}));
+	});
+	return { entries, plugins };
+}
+
+const pages = getWebPackPages();
+
+
 module.exports = {
-	entry: {
-		bundle: ['./src/main.js']
-	},
+	entry: pages.entries,
 	resolve: {
 		alias: {
 			svelte: path.resolve('node_modules', 'svelte')
@@ -77,13 +94,10 @@ module.exports = {
 		new MiniCssExtractPlugin({
 			filename: '[name].css'
 		}),
-		new HtmlWebpackPlugin({
-			template: `${PATHS.src}/template.ejs`
-		}),
 		new PurgeCSSPlugin({
 			paths: glob.sync(`${PATHS.src}/**/*`,  { nodir: true }),
 		})
-	],
+	].concat(pages.plugins),
 	devtool: prod ? false: 'source-map',
 	optimization: {
 		splitChunks: {

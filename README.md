@@ -1,6 +1,6 @@
 # Svelte app template with Materialize CSS
 
-This is a template to build web apps with [Svelte](https://svelte.dev) and [Materialize CSS](https://materializecss.com/).
+This is a template to build a multipage web app (MPA) with [Svelte](https://svelte.dev) and [Materialize CSS](https://materializecss.com/).
 
 
 ## What is included
@@ -53,6 +53,7 @@ npm run build
 This command create in `public` folder `index.html`, `bundle.css` and `bundel-xxxxx.js`, where `xxxxx` is a hash that changes every build.
 
 ## Change Materialize CSS color palette
+
 If you need to change Materialize CSS default color palette use `materialize-custom.scss`.
 In the exampe below I changed primary, secondary, success, error and link colors.
 
@@ -74,3 +75,12 @@ $link-color: color("light-blue", "darken-1") !default;
 
 @import '../node_modules/materialize-css/sass/materialize.scss';
 ```
+
+## Create pages
+
+To create a new:
+- Create a folder inside `src/Pages` folder. The name of the folder will be the name of html page.
+- Inside the new page folder create two files:
+  - `main.js` (the name `main.js` is mandatory): this is the entry point of the new page;
+  - `newpage.svelte` (where `newpage` is a name you prefer): this is the svelte component file.
+- In the `main.js` file import the `newpage.svelte` file (`import App from './newpage.svelte';`).
