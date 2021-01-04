@@ -1,5 +1,4 @@
 node_modules
-public/bundle.*
-public/bundle-*
+public/
 package-lock.json
 .vscode/numbered-bookmarks.json
