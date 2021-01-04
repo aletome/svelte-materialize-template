@@ -6,9 +6,11 @@ This is a template to build web apps with [Svelte](https://svelte.dev) and [Mate
 ## What is included
 
 - Svelte framework
-- Materialice CSS
+- Materialice CSS with custom colour palette
+- Customizable html template
 - Webpack 5
 - Webpack dev server with hot reload
+- A sample page with Materialize sidenav.
 
 ## Get started
 
@@ -49,3 +51,26 @@ To generate production bundle:
 npm run build
 ```
 This command create in `public` folder `index.html`, `bundle.css` and `bundel-xxxxx.js`, where `xxxxx` is a hash that changes every build.
+
+## Change Materialize CSS color palette
+If you need to change Materialize CSS default color palette use `materialize-custom.scss`.
+In the exampe below I changed primary, secondary, success, error and link colors.
+
+```scss
+// 1. Custom Colors
+// ==========================================================================
+
+@import '../node_modules/materialize-css/sass/components/color-variables';
+
+//Place here color scheme you want
+$primary-color: color("teal", "lighten-2") !default;
+$primary-color-light: lighten($primary-color, 15%) !default;
+$primary-color-dark: darken($primary-color, 15%) !default;
+
+$secondary-color: color("pink", "lighten-1") !default;
+$success-color: color("green", "base") !default;
+$error-color: color("red", "base") !default;
+$link-color: color("light-blue", "darken-1") !default;
+
+@import '../node_modules/materialize-css/sass/materialize.scss';
+```
