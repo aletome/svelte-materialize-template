@@ -1,20 +1,25 @@
 {
   "name": "svelte-materialize-template",
-  "version": "1.0.1",
+  "version": "2.0.0",
   "homepage": "https://github.com/aletome/svelte-materialize-template",
   "author": {
     "name": "Alessandro Tomè"
   },
   "repository": {
-    "type" : "git",
-    "url" : "https://github.com/aletome/svelte-materialize-template"
+    "type": "git",
+    "url": "https://github.com/aletome/svelte-materialize-template"
   },
   "devDependencies": {
+    "clean-webpack-plugin": "^3.0.0",
+    "copy-webpack-plugin": "^7.0.0",
     "cross-env": "^7.0.3",
     "css-loader": "^5.0.1",
     "html-webpack-plugin": "^5.0.0-beta.1",
     "materialize-css": "^1.0.0-rc.2",
     "mini-css-extract-plugin": "^1.3.3",
+    "purgecss-webpack-plugin": "^3.1.3",
+    "sass": "^1.32.0",
+    "sass-loader": "^10.1.0",
     "serve": "^11.0.0",
     "style-loader": "^2.0.0",
     "svelte": "^3.0.0",

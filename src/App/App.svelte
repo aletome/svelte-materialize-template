@@ -1,7 +1,39 @@
 <script>
-	import Hello from '../Components/Hello/Hello.svelte';
+	import { onMount } from 'svelte';
+	import M from 'materialize-css';
+
+	onMount(async () => {
+		document.addEventListener('DOMContentLoaded', function () {
+			const elem = document.getElementById('slide-out');
+			const instance = M.Sidenav.init(elem, {});
+		});
+	});
 </script>
 
-<h1 class="purple-text text-darken-4 center-align">Svelte & Materialize CSS</h1>
-<Hello name={'Ale'}></Hello>
-<div class="center-align"><a class="waves-effect waves-light btn orange" href="index.html">Button</a></div>
+<nav>
+	<div class="nav-wrapper">
+		<a href="#!" data-target="slide-out" class="sidenav-trigger show-on-large">
+			<i class="material-icons">menu</i></a>
+		<a href="#!" class="brand-logo">Logo</a>
+	</div>
+</nav>
+
+<ul id="slide-out" class="sidenav">
+	<li>
+		<div class="user-view">
+			<div class="background">
+				<img src="images/office.jpg" alt="">
+			</div>
+			<a href="#!"><i class="medium material-icons grey-text lighten-2">account_circle</i></a>
+			<a href="#!"><span class="name">John Doe</span></a>
+			<a href="#!"><span class="email">jdandturk@gmail.com</span></a>
+		</div>
+	</li>
+	<li><a href="#!" class="waves-effect"><i class="material-icons">cloud</i>First Link With Icon</a></li>
+	<li><a href="#!" class="waves-effect">Second Link</a></li>
+	<li>
+		<div class="divider"></div>
+	</li>
+	<li><a href="#!" class="subheader">Settings</a></li>
+	<li><a class="waves-effect" href="#!">Third Link With Waves</a></li>
+</ul>

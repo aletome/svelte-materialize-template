@@ -1,9 +1,16 @@
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const PurgeCSSPlugin = require('purgecss-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const CopyPlugin = require("copy-webpack-plugin");
+const glob = require('glob');
 const path = require('path');
 
 const mode = process.env.NODE_ENV || 'development';
 const prod = mode === 'production';
+const PATHS = {
+	src: path.join(__dirname, 'src')
+}
 
 module.exports = {
 	entry: {
@@ -13,7 +20,7 @@ module.exports = {
 		alias: {
 			svelte: path.resolve('node_modules', 'svelte')
 		},
-		extensions: ['.mjs', '.js', '.svelte'],
+		extensions: ['.mjs', '.js', '.svelte', 'scss'],
 		mainFields: ['svelte', 'browser', 'module', 'main']
 	},
 	output: {
@@ -35,6 +42,17 @@ module.exports = {
 				}
 			},
 			{
+				test: /\.s[ac]ss$/i,
+				use: [
+				  // Creates `style` nodes from JS strings
+				  "style-loader",
+				  // Translates CSS into CommonJS
+				  "css-loader",
+				  // Compiles Sass to CSS
+				  "sass-loader",
+				],
+			},
+			{
 				test: /\.css$/,
 				use: [
 					/**
@@ -49,10 +67,27 @@ module.exports = {
 	},
 	mode,
 	plugins: [
+		new CleanWebpackPlugin(),
+		new CopyPlugin({
+			patterns: [
+			  { from: `${PATHS.src}/favicon.png`, to: 'favicon.png' },
+			  { from: `${PATHS.src}/global.css`, to: 'global.css' },
+			],
+		}),
 		new MiniCssExtractPlugin({
 			filename: '[name].css'
 		}),
-		new HtmlWebpackPlugin()
+		new HtmlWebpackPlugin({
+			template: `${PATHS.src}/template.ejs`
+		}),
+		new PurgeCSSPlugin({
+			paths: glob.sync(`${PATHS.src}/**/*`,  { nodir: true }),
+		})
 	],
-	devtool: prod ? false: 'source-map'
+	devtool: prod ? false: 'source-map',
+	optimization: {
+		splitChunks: {
+		  maxSize: 20000
+		}
+	}
 };

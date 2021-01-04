@@ -1,5 +1,4 @@
-// import 'materialize-css';
-import '../node_modules/materialize-css/dist/css/materialize.css';
+import './materialize-custom.scss';
 import App from './App/App.svelte';
 
 const app = new App({
